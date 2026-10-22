@@ -1,0 +1,403 @@
+/* ============================================================
+   compiler.css — Online Compiler UI Styles
+   GamifiedLearningApp — Add to /css/compiler.css
+   ============================================================ */
+
+/* ---- Compiler Panel ---- */
+.compiler-panel {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    margin-top: 24px;
+    overflow: hidden;
+}
+
+.compiler-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 20px;
+    background: rgba(108, 99, 255, 0.12);
+    border-bottom: 1px solid var(--border);
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.compiler-title {
+    font-weight: 700;
+    font-size: 15px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.compiler-controls {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+/* Language Selector */
+.lang-select {
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid var(--border);
+    color: var(--text-main);
+    padding: 7px 12px;
+    border-radius: var(--radius-sm);
+    font-size: 13px;
+    cursor: pointer;
+    transition: var(--transition);
+    min-width: 130px;
+}
+
+.lang-select:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 2px rgba(108, 99, 255, 0.2);
+}
+
+.lang-select option {
+    background: var(--bg-card);
+    color: var(--text-main);
+}
+
+/* ---- Code Editor Area ---- */
+.compiler-body {
+    padding: 0;
+}
+
+.editor-area {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Line Numbers + Editor */
+.editor-wrapper {
+    position: relative;
+    display: flex;
+    border-bottom: 1px solid var(--border);
+}
+
+.line-numbers {
+    padding: 16px 10px;
+    background: rgba(0, 0, 0, 0.2);
+    color: var(--text-muted);
+    font-family: 'Cascadia Code', 'Fira Code', 'Courier New', monospace;
+    font-size: 13px;
+    line-height: 1.7;
+    min-width: 42px;
+    text-align: right;
+    user-select: none;
+    border-right: 1px solid var(--border);
+    overflow: hidden;
+}
+
+textarea#compiler-code {
+    flex: 1;
+    min-height: 280px;
+    max-height: 500px;
+    padding: 16px;
+    background: #0d0d1a;
+    color: #e0e0ff;
+    border: none;
+    font-family: 'Cascadia Code', 'Fira Code', 'Courier New', monospace;
+    font-size: 13px;
+    line-height: 1.7;
+    resize: vertical;
+    tab-size: 4;
+    outline: none;
+    width: 100%;
+}
+
+textarea#compiler-code::placeholder {
+    color: rgba(167, 169, 190, 0.4);
+}
+
+/* ---- Stdin Input ---- */
+.stdin-section {
+    padding: 12px 16px;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+}
+
+.stdin-label {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--text-muted);
+    padding-top: 8px;
+    white-space: nowrap;
+    min-width: 90px;
+}
+
+textarea#compiler-input {
+    flex: 1;
+    height: 64px;
+    padding: 8px 12px;
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    color: var(--text-main);
+    font-family: 'Cascadia Code', 'Fira Code', 'Courier New', monospace;
+    font-size: 12px;
+    resize: vertical;
+    outline: none;
+    transition: var(--transition);
+}
+
+textarea#compiler-input:focus {
+    border-color: var(--primary);
+}
+
+/* ---- Action Buttons ---- */
+.compiler-actions {
+    padding: 12px 16px;
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    border-bottom: 1px solid var(--border);
+}
+
+.btn-run {
+    background: linear-gradient(135deg, #43E97B, #38f9d7);
+    color: #0d1117;
+    border: none;
+    padding: 10px 24px;
+    border-radius: var(--radius-sm);
+    font-weight: 700;
+    font-size: 14px;
+    cursor: pointer;
+    transition: var(--transition);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.btn-run:hover { filter: brightness(1.1); transform: translateY(-1px); }
+.btn-run:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
+
+.btn-evaluate {
+    background: linear-gradient(135deg, var(--primary), #9b59b6);
+    color: #fff;
+    border: none;
+    padding: 10px 24px;
+    border-radius: var(--radius-sm);
+    font-weight: 700;
+    font-size: 14px;
+    cursor: pointer;
+    transition: var(--transition);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.btn-evaluate:hover { filter: brightness(1.1); transform: translateY(-1px); }
+.btn-evaluate:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
+
+.btn-clear-code {
+    background: transparent;
+    border: 1px solid var(--border);
+    color: var(--text-muted);
+    padding: 10px 16px;
+    border-radius: var(--radius-sm);
+    font-size: 13px;
+    cursor: pointer;
+    transition: var(--transition);
+}
+.btn-clear-code:hover { border-color: var(--secondary); color: var(--secondary); }
+
+/* ---- Output Section ---- */
+.output-panel {
+    padding: 16px;
+    min-height: 80px;
+}
+
+.output-panel-header {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text-muted);
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.output-badge {
+    font-size: 11px;
+    padding: 2px 8px;
+    border-radius: 20px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+
+.badge-success { background: rgba(67, 233, 123, 0.15); color: #43E97B; }
+.badge-error   { background: rgba(255, 101, 132, 0.15); color: #FF6584; }
+.badge-warning { background: rgba(255, 193, 7, 0.15);   color: #ffc107; }
+
+.output-content {
+    background: #0d0d1a;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    padding: 14px;
+    font-family: 'Cascadia Code', 'Fira Code', 'Courier New', monospace;
+    font-size: 13px;
+    line-height: 1.7;
+    white-space: pre-wrap;
+    word-break: break-word;
+    min-height: 60px;
+    color: #e0e0ff;
+    display: none;
+}
+
+.output-content.visible { display: block; }
+
+.output-content.type-output       { border-left: 3px solid #43E97B; }
+.output-content.type-compile-err  { border-left: 3px solid #FF6584; color: #ff9eb5; }
+.output-content.type-runtime-err  { border-left: 3px solid #ffc107; color: #ffe083; }
+
+/* ---- HTML Preview ---- */
+#html-preview-frame {
+    width: 100%;
+    height: 320px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    background: #fff;
+    display: none;
+}
+
+/* ---- AI Feedback ---- */
+.ai-feedback-box {
+    margin-top: 10px;
+    padding: 12px 14px;
+    background: rgba(108, 99, 255, 0.08);
+    border: 1px solid rgba(108, 99, 255, 0.2);
+    border-radius: var(--radius-sm);
+    font-size: 13px;
+    color: var(--text-muted);
+    display: none;
+    line-height: 1.8;
+}
+.ai-feedback-box.visible { display: block; }
+.ai-feedback-box strong { color: var(--primary); }
+
+/* ---- Eval Results ---- */
+.eval-results {
+    margin-top: 14px;
+    display: none;
+}
+.eval-results.visible { display: block; }
+
+.test-case-row {
+    display: flex;
+    flex-direction: column;
+    padding: 8px 12px;
+    border-radius: var(--radius-sm);
+    margin-bottom: 6px;
+    font-size: 13px;
+    font-weight: 500;
+}
+
+.tc-pass { background: rgba(67, 233, 123, 0.08); border-left: 3px solid #43E97B; color: #a0f7c5; }
+.tc-fail { background: rgba(255, 101, 132, 0.08); border-left: 3px solid #FF6584; color: #ffb3c1; }
+
+.tc-detail {
+    font-family: 'Cascadia Code', 'Fira Code', monospace;
+    font-size: 11px;
+    color: var(--text-muted);
+    margin-top: 4px;
+}
+
+.tc-detail code {
+    background: rgba(255, 255, 255, 0.06);
+    padding: 1px 5px;
+    border-radius: 3px;
+    color: #c9d1d9;
+}
+
+.tc-label {
+    font-size: 11px;
+    font-weight: 600;
+    color: #8b949e;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.tc-pre {
+    background: rgba(255,255,255,0.05);
+    border-radius: 4px;
+    padding: 4px 8px;
+    margin: 2px 0 6px 0;
+    font-family: 'Cascadia Code', 'Fira Code', monospace;
+    font-size: 11px;
+    color: #a0f7c5;
+    white-space: pre-wrap;
+    word-break: break-all;
+    display: inline-block;
+    min-width: 60px;
+}
+
+.tc-pre.tc-wrong {
+    color: #ffb3c1;
+    background: rgba(255, 101, 132, 0.08);
+}
+
+.tc-error {
+    color: #ffb3c1 !important;
+}
+
+.tc-input-passed {
+    font-size: 11px;
+    color: #8b949e;
+    margin-top: 2px;
+}
+
+.tc-input-passed code {
+    background: rgba(255,255,255,0.05);
+    padding: 1px 5px;
+    border-radius: 3px;
+    color: #8b949e;
+}
+
+.eval-summary {
+    margin-top: 10px;
+    padding: 12px 16px;
+    border-radius: var(--radius-sm);
+    font-size: 15px;
+    font-weight: 700;
+    text-align: center;
+}
+
+.eval-pass { background: rgba(67, 233, 123, 0.12); color: #43E97B; border: 1px solid rgba(67, 233, 123, 0.3); }
+.eval-fail { background: rgba(255, 101, 132, 0.12); color: #FF6584; border: 1px solid rgba(255, 101, 132, 0.3); }
+
+/* ---- Execution time ---- */
+.exec-time {
+    font-size: 11px;
+    color: var(--text-muted);
+    margin-top: 6px;
+    text-align: right;
+}
+
+/* ---- Loading spinner ---- */
+.compiler-spinner {
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    border: 2px solid rgba(255,255,255,0.2);
+    border-top-color: #fff;
+    border-radius: 50%;
+    animation: spin 0.7s linear infinite;
+    vertical-align: middle;
+    margin-right: 6px;
+}
+
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* ---- Responsive ---- */
+@media (max-width: 640px) {
+    .compiler-header { flex-direction: column; align-items: flex-start; }
+    .stdin-section { flex-direction: column; }
+    .stdin-label { min-width: unset; }
+}
